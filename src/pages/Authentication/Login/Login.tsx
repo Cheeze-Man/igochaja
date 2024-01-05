@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { emailPattern, passwordPattern } from 'utils/constant';
 import InputBox from '../components/InputBox/InputBox';
 import './Login.scss';
 
@@ -8,11 +9,8 @@ export default function Login() {
     password: '',
   });
 
-  const isEmailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(loginInfo.email);
-  const isPasswordValid =
-    /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,16}$/.test(
-      loginInfo.password,
-    );
+  const isEmailValid = emailPattern.test(loginInfo.email);
+  const isPasswordValid = passwordPattern.test(loginInfo.password);
 
   const isFormValid = isEmailValid && isPasswordValid;
 
