@@ -8,14 +8,20 @@ export default function Login() {
     password: '',
   });
 
+  const isEmailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(loginInfo.email);
+  const isPasswordValid =
+    /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,16}$/.test(
+      loginInfo.password,
+    );
+
+  const isFormValid = isEmailValid && isPasswordValid;
+
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setLoginInfo({
       ...loginInfo,
       [e.target.name]: e.target.value,
     });
   };
-
-  console.log(loginInfo);
 
   return (
     <div className="login w-full h-full flex flex-col items-center justify-center">
@@ -35,7 +41,12 @@ export default function Login() {
         placeholder=""
         onChange={handleInputChange}
       />
-      <button className="loginButton w-1/4 h-14 font-bold rounded-xl">
+      <button
+        className={`loginButton w-1/4 h-14 font-bold rounded-lg ${
+          isFormValid ? '' : 'disabled'
+        }`}
+        disabled={!isFormValid}
+      >
         로그인
       </button>
     </div>
