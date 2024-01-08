@@ -1,0 +1,19 @@
+.inputBox {
+  .title {
+    letter-spacing: -1px;
+  }
+
+  input {
+    box-sizing: border-box;
+    border-bottom: 1px solid #ebebeb;
+    outline: none;
+
+    &:focus {
+      border-bottom: 2px solid black;
+
+      &::placeholder {
+        color: transparent;
+      }
+    }
+  }
+}

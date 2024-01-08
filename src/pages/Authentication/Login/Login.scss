@@ -1,0 +1,11 @@
+.login {
+  .loginButton {
+    background-color: #222;
+    color: white;
+    letter-spacing: -1px;
+
+    &.disabled {
+      opacity: 0.1;
+    }
+  }
+}
