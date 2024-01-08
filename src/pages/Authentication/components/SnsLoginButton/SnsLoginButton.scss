@@ -1,0 +1,14 @@
+.snsLoginButton {
+  position: relative;
+  border: 1px solid #ebebeb;
+  letter-spacing: -1.2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 20px;
+  img {
+    position: absolute;
+    width: 40px;
+    left: 20px;
+  }
+}

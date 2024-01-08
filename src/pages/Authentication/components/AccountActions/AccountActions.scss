@@ -1,0 +1,16 @@
+.accountActions {
+  li {
+    width: 33.333333%;
+    color: gray;
+    font-size: 0.9rem;
+    letter-spacing: -2px;
+    cursor: pointer;
+
+    &:first-child {
+      border-right: 1px solid #ebebeb;
+    }
+    &:last-child {
+      border-left: 1px solid #ebebeb;
+    }
+  }
+}
