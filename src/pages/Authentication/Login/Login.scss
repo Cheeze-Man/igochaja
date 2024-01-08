@@ -4,7 +4,7 @@
     color: white;
     letter-spacing: -1px;
 
-    &.disabled {
+    &:disabled {
       opacity: 0.1;
     }
   }

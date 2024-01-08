@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { emailPattern, passwordPattern } from 'utils/constant';
 import InputBox from '../components/InputBox/InputBox';
+import AccountActions from '../components/AccountActions/AccountActions';
 import './Login.scss';
 
 export default function Login() {
@@ -17,7 +18,7 @@ export default function Login() {
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setLoginInfo({
       ...loginInfo,
-      [e.target.name]: e.target.value,
+      [e.target.type]: e.target.value,
     });
   };
 
@@ -26,27 +27,25 @@ export default function Login() {
       <img className="w-64" src="/images/logo.png" alt="Igochaja" />
 
       <InputBox
-        type="text"
+        type="email"
         title="이메일 주소"
-        name="email"
         placeholder="ex) igochaja@email.com"
         onChange={handleInputChange}
       />
       <InputBox
         type="password"
         title="비밀번호"
-        name="password"
         placeholder=""
         onChange={handleInputChange}
       />
       <button
-        className={`loginButton w-1/4 h-14 font-bold rounded-lg ${
-          isFormValid ? '' : 'disabled'
-        }`}
+        className={'loginButton w-2/5 h-14 font-bold rounded-lg'}
         disabled={!isFormValid}
       >
         로그인
       </button>
+
+      <AccountActions />
     </div>
   );
 }
