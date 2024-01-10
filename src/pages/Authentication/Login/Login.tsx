@@ -1,12 +1,15 @@
 import { useState } from 'react';
 import { emailPattern, passwordPattern } from 'utils/constant';
+import { LoginInfo } from 'types/types';
+import useUserStore from 'store/store';
+import handleLogin from 'api/Authentication/Login/LoginAPI';
 import InputBox from '../components/InputBox/InputBox';
 import AccountActions from '../components/AccountActions/AccountActions';
 import SnsLoginButtons from './SnsLoginButtons/SnsLoginButtons';
 import './Login.scss';
 
 export default function Login() {
-  const [loginInfo, setLoginInfo] = useState({
+  const [loginInfo, setLoginInfo] = useState<LoginInfo>({
     email: '',
     password: '',
   });
@@ -45,6 +48,9 @@ export default function Login() {
       <button
         className="loginButton w-2/5 h-14 font-bold rounded-xl shadow-md"
         disabled={!isFormValid}
+        onClick={() => {
+          handleLogin(loginInfo, 'user/signin');
+        }}
       >
         로그인
       </button>
