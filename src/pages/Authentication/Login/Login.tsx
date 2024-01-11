@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { emailPattern, passwordPattern } from 'utils/constant';
 import { LoginInfo } from 'types/types';
-import useUserStore from 'store/store';
 import handleLogin from 'api/Authentication/Login/LoginAPI';
 import InputBox from '../components/InputBox/InputBox';
 import AccountActions from '../components/AccountActions/AccountActions';
@@ -21,7 +20,7 @@ export default function Login() {
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setLoginInfo({
       ...loginInfo,
-      [e.target.type]: e.target.value,
+      [e.target.name]: e.target.value,
     });
   };
 
@@ -34,12 +33,14 @@ export default function Login() {
       />
 
       <InputBox
+        name="email"
         type="email"
         title="이메일 주소"
         placeholder="ex) igochaja@email.com"
         onChange={handleInputChange}
       />
       <InputBox
+        name="password"
         type="password"
         title="비밀번호"
         placeholder=""

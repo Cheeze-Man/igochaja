@@ -2,6 +2,7 @@ import './InputBox.scss';
 import { FC } from 'react';
 
 interface InputBoxProps {
+  name: string;
   type: string;
   title: string;
   placeholder: string;
@@ -9,6 +10,7 @@ interface InputBoxProps {
 }
 
 const InputBox: FC<InputBoxProps> = ({
+  name,
   type,
   title,
   placeholder,
@@ -19,6 +21,7 @@ const InputBox: FC<InputBoxProps> = ({
       <p className="title text-sm font-bold mb-1">{title}</p>
       <input
         className="h-10"
+        name={name}
         type={type}
         placeholder={placeholder}
         onChange={onChange}
