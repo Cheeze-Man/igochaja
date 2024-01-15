@@ -1,0 +1,12 @@
+.signUp {
+  width: 1280px;
+  .signUpButton {
+    background-color: #222;
+    color: white;
+    letter-spacing: -1px;
+
+    &:disabled {
+      opacity: 0.1;
+    }
+  }
+}

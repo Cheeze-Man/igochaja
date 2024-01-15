@@ -1,10 +1,11 @@
 .login {
+  width: 1280px;
   .loginButton {
     background-color: #222;
     color: white;
     letter-spacing: -1px;
 
-    &.disabled {
+    &:disabled {
       opacity: 0.1;
     }
   }
