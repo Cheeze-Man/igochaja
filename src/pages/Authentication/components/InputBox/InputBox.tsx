@@ -7,6 +7,9 @@ interface InputBoxProps {
   title: string;
   placeholder: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  isValid: boolean;
+  message: string;
+  hasTouched: boolean;
 }
 
 const InputBox: FC<InputBoxProps> = ({
@@ -15,6 +18,9 @@ const InputBox: FC<InputBoxProps> = ({
   title,
   placeholder,
   onChange,
+  isValid,
+  message,
+  hasTouched,
 }) => {
   return (
     <div className="inputBox flex flex-col w-2/5 mb-7">
@@ -25,7 +31,11 @@ const InputBox: FC<InputBoxProps> = ({
         type={type}
         placeholder={placeholder}
         onChange={onChange}
+        onBlur={() => hasTouched}
       />
+      {hasTouched && !isValid && (
+        <p className="message text-xs font-bold text-red-500">{message}</p>
+      )}
     </div>
   );
 };
