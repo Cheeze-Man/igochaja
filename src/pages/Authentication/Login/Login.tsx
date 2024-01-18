@@ -13,6 +13,11 @@ export default function Login() {
     password: '',
   });
 
+  const [inputTouched, setInputTouched] = useState({
+    email: false,
+    password: false,
+  });
+
   const isEmailValid = emailPattern.test(loginInfo.email);
   const isPasswordValid = passwordPattern.test(loginInfo.password);
   const isFormValid = isEmailValid && isPasswordValid;
@@ -21,6 +26,10 @@ export default function Login() {
     setLoginInfo({
       ...loginInfo,
       [e.target.name]: e.target.value,
+    });
+    setInputTouched({
+      ...inputTouched,
+      [e.target.name]: true,
     });
   };
 
@@ -38,6 +47,9 @@ export default function Login() {
         title="이메일 주소"
         placeholder="ex) igochaja@email.com"
         onChange={handleInputChange}
+        isValid={isEmailValid}
+        message="올바른 이메일 형식이 아닙니다."
+        hasTouched={inputTouched.email}
       />
       <InputBox
         name="password"
@@ -45,6 +57,9 @@ export default function Login() {
         title="비밀번호"
         placeholder=""
         onChange={handleInputChange}
+        isValid={isPasswordValid}
+        message="영문, 숫자, 특수문자를 조합하여 8~16자로 입력해주세요."
+        hasTouched={inputTouched.password}
       />
       <button
         className="loginButton w-2/5 h-14 font-bold rounded-xl shadow-md"

@@ -17,7 +17,7 @@ const signUpUser = async (userData: SignUpData): Promise<SignUpResponse> => {
     const response = await axios.post(`${baseURL}/basic/signup`, userData);
     return response.data;
   } catch (error) {
-    console.error('회원가입 중 오류 발생:', error);
+    alert(`회원가입 중 오류 발생. 내용:${error}`);
     throw error;
   }
 };
@@ -32,7 +32,7 @@ const handleSignUp = async (signUpInfo: SignUpData) => {
       alert('회원가입 실패');
     }
   } catch (error) {
-    console.error('회원가입 중 오류 발생:', error);
+    alert(`회원가입 중 오류 발생. 내용:${error}`);
     throw error;
   }
 };

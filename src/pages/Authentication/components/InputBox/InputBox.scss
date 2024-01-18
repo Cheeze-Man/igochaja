@@ -1,4 +1,7 @@
 .inputBox {
+  box-sizing: border-box;
+  position: relative;
+
   .title {
     letter-spacing: -1px;
   }
@@ -15,5 +18,10 @@
         color: transparent;
       }
     }
+  }
+
+  .message {
+    position: absolute;
+    bottom: -15px;
   }
 }

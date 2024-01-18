@@ -18,6 +18,13 @@ export default function SignUp() {
     passwordCheck: '',
   });
 
+  const [inputTouched, setInputTouched] = useState({
+    name: false,
+    email: false,
+    password: false,
+    passwordCheck: false,
+  });
+
   const isNameValid = namePattern.test(signUpInfo.name);
   const isEmailValid = emailPattern.test(signUpInfo.email);
   const isPasswordValid = passwordPattern.test(signUpInfo.password);
@@ -29,6 +36,10 @@ export default function SignUp() {
     setSignUpInfo({
       ...signUpInfo,
       [e.target.name]: e.target.value,
+    });
+    setInputTouched({
+      ...inputTouched,
+      [e.target.name]: true,
     });
   };
 
@@ -60,6 +71,13 @@ export default function SignUp() {
           title={field.title}
           placeholder={field.placeholder}
           onChange={handleInputChange}
+          isValid={eval(
+            `is${
+              field.name.charAt(0).toUpperCase() + field.name.slice(1)
+            }Valid`,
+          )}
+          message={field.message}
+          hasTouched={inputTouched[field.name as keyof typeof inputTouched]}
         />
       ))}
       <button
