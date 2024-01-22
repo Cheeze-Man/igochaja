@@ -2,7 +2,7 @@ import './EditProfile.scss';
 
 export default function EditProfile() {
   return (
-    <div className="editProfile w-full h-full flex flex-col items-center justify-center">
+    <div className="editProfile flex flex-col items-center justify-center">
       <h1 className=" title w-full py-20 mb-8 text-4xl font-bold tracking-tight flex justify-center">
         프로필 편집
       </h1>
