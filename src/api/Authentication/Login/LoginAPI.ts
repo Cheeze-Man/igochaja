@@ -1,6 +1,7 @@
 import { LoginInfo } from 'types/types';
 import axios from 'axios';
 import useUserStore from 'store/store';
+import { useNavigate } from 'react-router-dom';
 
 const baseURL = process.env.REACT_APP_BASE_URL;
 
@@ -8,12 +9,14 @@ const handleLogin = async (
   loginInfo: LoginInfo,
   url: string,
 ): Promise<void> => {
+  const navigation = useNavigate();
   try {
     const response = await axios.post(`${baseURL}/${url}`, {
       email: loginInfo.email,
       password: loginInfo.password,
     });
     const { data } = response;
+    navigation('/main');
     //TODO:통신 시 console.log(data) 필요.
 
     if (data && data.length > 0) {
