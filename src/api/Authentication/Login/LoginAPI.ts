@@ -22,10 +22,12 @@ const handleLogin = async (
     if (data && data.length > 0) {
       const setUser = useUserStore((state) => state.setUser);
       setUser({
-        name: data[0].name,
-        email: data[0].email,
-        image: data[0].image,
         token: data[0].token,
+        email: data[0].email,
+        social: data[0].social,
+        name: data[0].name,
+        image: data[0].image,
+        socialId: data[0].socialId,
       });
     }
   } catch (error) {
