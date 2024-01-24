@@ -4,6 +4,7 @@ import { checkPassword } from 'api/EditUserInfo/EditPassword/checkPassword';
 import { IoClose } from 'react-icons/io5';
 import useUserStore from 'store/store';
 import './EditProfile.scss';
+import ProfileImage from './ProfileImage/ProfileImage';
 
 export default function EditProfile() {
   const navigate = useNavigate();
@@ -34,11 +35,7 @@ export default function EditProfile() {
       </h1>
 
       <section className="userInfo flex flex-col items-center gap-20 mt-10">
-        <img
-          className="rounded-full size-96"
-          src="https://cvhrma.org/wp-content/uploads/2015/07/default-profile-photo.jpg"
-          alt="profileImage"
-        />
+        <ProfileImage />
         <div className="nameDiv flex gap-2">
           <p className="font-bold text-2xl tracking-tighter">닉네임</p>
           <button className="editButton shadow-md px-3">변경</button>
