@@ -1,31 +1,30 @@
 import { useState, ChangeEvent } from 'react';
-import { FaCamera } from 'react-icons/fa';
 import { uploadProfileImage } from 'api/EditUserInfo/UploadImageResponse/UploadImageResponse';
-import useUserStore from 'store/store';
+import { FaCamera } from 'react-icons/fa';
 import './ProfileImage.scss';
 
 export default function ProfileImage() {
-  const [selectedFile, setSelectedFile] = useState<File | null>(null);
-
-  const user = useUserStore((state) => state.user);
-  const accessToken = user?.token;
+  const [profileImageUrl, setProfileImageUrl] = useState<string | null>(null);
 
   const handleFileChange = async (event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
 
     if (file && file.type.startsWith('image/')) {
       try {
-        const jwt = accessToken ? accessToken : 'TODO : 이 부분 지워야 함.';
+        const jwt = 'your_jwt_token'; // 실제 JWT 토큰으로 대체해야 합니다.
 
+        // 이미지 업로드
         const response = await uploadProfileImage(jwt, file);
 
         if (response.success) {
-          window.location.reload();
+          console.log('Profile image uploaded successfully');
+          const imageUrl = response.imageUrl;
+          setProfileImageUrl(imageUrl);
         } else {
-          alert(`프로필 이미지 업로드 실패:${response.message}`);
+          console.error('Profile image upload failed:', response.message);
         }
       } catch (error) {
-        alert(`예상치 못한 오류:${error}`);
+        console.error('Error handling profile image:', error);
       }
     } else {
       console.error('Please select a valid image file.');
@@ -47,9 +46,8 @@ export default function ProfileImage() {
       <img
         className="rounded-full size-96"
         src={
-          selectedFile
-            ? URL.createObjectURL(selectedFile)
-            : 'https://cvhrma.org/wp-content/uploads/2015/07/default-profile-photo.jpg'
+          profileImageUrl ||
+          'https://cvhrma.org/wp-content/uploads/2015/07/default-profile-photo.jpg'
         }
         alt="profileImage"
       />

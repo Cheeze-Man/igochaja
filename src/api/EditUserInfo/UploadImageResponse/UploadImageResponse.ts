@@ -5,6 +5,7 @@ const baseURL = process.env.REACT_APP_BASE_URL;
 interface UploadImageResponse {
   success: boolean;
   message: string;
+  imageUrl: string;
 }
 
 export const uploadProfileImage = async (
