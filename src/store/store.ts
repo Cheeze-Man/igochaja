@@ -1,10 +1,12 @@
 import create from 'zustand';
 
 interface User {
-  name: string;
-  email: string;
-  image: string;
   token: string;
+  email: string;
+  social: string;
+  name: string;
+  image: string | undefined | null;
+  socialId: string | null;
 }
 
 interface State {

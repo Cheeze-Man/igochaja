@@ -1,0 +1,24 @@
+.profileImageDiv {
+  position: relative;
+
+  .cameraIconDiv {
+    position: absolute;
+    bottom: 1.2rem;
+    right: 1.2rem;
+    background-color: lightgrey;
+    border-radius: 50%;
+    padding: 0.8rem;
+    cursor: pointer;
+
+    &:active {
+      box-shadow: none;
+    }
+    &:hover {
+      animation: floatAnimation 1s infinite ease-in-out;
+    }
+
+    .cameraIcon {
+      font-size: 2.5rem;
+    }
+  }
+}
