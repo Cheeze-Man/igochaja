@@ -24,7 +24,7 @@ const InputBox: FC<InputBoxProps> = ({
 }) => {
   return (
     <div className="inputBox flex flex-col w-2/5 mb-7">
-      <p className="title text-sm font-bold mb-1">{title}</p>
+      <p className="inputTitle text-sm font-bold mb-1">{title}</p>
       <input
         className="h-10"
         name={name}

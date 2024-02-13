@@ -3,8 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { checkPassword } from 'api/EditUserInfo/EditPassword/checkPassword';
 import { IoClose } from 'react-icons/io5';
 import useUserStore from 'store/store';
-import './EditProfile.scss';
 import ProfileImage from './ProfileImage/ProfileImage';
+import './EditProfile.scss';
 
 export default function EditProfile() {
   const navigate = useNavigate();

@@ -9,3 +9,8 @@ export interface SignUpinfo {
   password: string;
   passwordCheck: string;
 }
+
+export interface NewPassword {
+  password: string;
+  passwordCheck: string;
+}

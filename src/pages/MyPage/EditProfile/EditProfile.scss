@@ -6,11 +6,11 @@
   }
 
   .editButton {
-    border: 2px solid black;
+    border: 1px solid #ebebeb;
     border-radius: 10px;
     font-weight: 700;
     letter-spacing: -1px;
-    background-color: #f5f5f5;
+    background-color: #ebebeb;
     transition: all 0.3s ease-in-out;
 
     &:active {
