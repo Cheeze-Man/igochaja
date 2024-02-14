@@ -4,6 +4,10 @@ import { NewPassword } from 'types/types';
 import { passwordPattern } from 'utils/constant';
 import InputBox from 'pages/Authentication/components/InputBox/InputBox';
 import './EditPassword.scss';
+import { changePassword } from 'api/EditUserInfo/EditPassword/editPasswordApi';
+
+//TODO: 쿠키에서 실제 토큰 가져오도록 수정해야 함.
+const accessToken = 'jwt_token';
 
 export default function EditPassword() {
   const [newPasswordVisible, setNewPasswordVisible] = useState(false);
@@ -20,6 +24,7 @@ export default function EditPassword() {
   const isPasswordValid = passwordPattern.test(passwordStates.password);
   const isPasswordCheckValid =
     passwordStates.password === passwordStates.passwordCheck;
+  const isFormValid = isPasswordValid && isPasswordCheckValid;
 
   const toggleNewPasswordVisibility = () => {
     setNewPasswordVisible((prev) => !prev);
@@ -37,6 +42,14 @@ export default function EditPassword() {
       ...inputTouched,
       [e.target.name]: true,
     });
+  };
+
+  const handleSubmit = async () => {
+    try {
+      await changePassword(accessToken, passwordStates.password);
+    } catch (error: any) {
+      console.error('Error changing password:', error.message);
+    }
   };
 
   return (
@@ -100,8 +113,12 @@ export default function EditPassword() {
           )}
         </div>
 
-        <button className="editButton w-2/5 shadow-md px-3 py-2 text-2xl font-bold">
-          변경 내용 저장
+        <button
+          className="submitButton w-2/5 shadow-md p-3 text-2xl font-bold"
+          disabled={!isFormValid}
+          onClick={handleSubmit}
+        >
+          비밀번호 변경
         </button>
       </section>
     </div>
