@@ -2,12 +2,10 @@ import { useState } from 'react';
 import { MdVisibility, MdVisibilityOff } from 'react-icons/md';
 import { NewPassword } from 'types/types';
 import { passwordPattern } from 'utils/constant';
-import InputBox from 'pages/Authentication/components/InputBox/InputBox';
-import './EditPassword.scss';
 import { changePassword } from 'api/EditUserInfo/EditPassword/editPasswordApi';
-
-//TODO: 쿠키에서 실제 토큰 가져오도록 수정해야 함.
-const accessToken = 'jwt_token';
+import InputBox from 'pages/Authentication/components/InputBox/InputBox';
+import useUserStore from 'store/store';
+import './EditPassword.scss';
 
 export default function EditPassword() {
   const [newPasswordVisible, setNewPasswordVisible] = useState(false);
@@ -45,6 +43,9 @@ export default function EditPassword() {
   };
 
   const handleSubmit = async () => {
+    const user = useUserStore((state) => state.user);
+    const accessToken = user?.token ?? '';
+
     try {
       await changePassword(accessToken, passwordStates.password);
     } catch (error: any) {

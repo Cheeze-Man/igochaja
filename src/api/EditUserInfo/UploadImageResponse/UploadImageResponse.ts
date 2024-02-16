@@ -9,7 +9,7 @@ interface UploadImageResponse {
 }
 
 export const uploadProfileImage = async (
-  jwt: string,
+  accessToken: string,
   imageFile: File,
 ): Promise<UploadImageResponse> => {
   try {
@@ -22,7 +22,7 @@ export const uploadProfileImage = async (
       {
         headers: {
           'Content-Type': 'multipart/form-data',
-          Authorization: jwt,
+          Authorization: accessToken,
         },
       },
     );

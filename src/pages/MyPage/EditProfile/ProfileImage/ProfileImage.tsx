@@ -1,6 +1,7 @@
 import { useState, ChangeEvent } from 'react';
 import { uploadProfileImage } from 'api/EditUserInfo/UploadImageResponse/UploadImageResponse';
 import { FaCamera } from 'react-icons/fa';
+import useUserStore from 'store/store';
 import './ProfileImage.scss';
 
 export default function ProfileImage() {
@@ -11,10 +12,11 @@ export default function ProfileImage() {
 
     if (file && file.type.startsWith('image/')) {
       try {
-        const jwt = 'your_jwt_token'; // 실제 JWT 토큰으로 대체해야 합니다.
+        const user = useUserStore((state) => state.user);
+        const accessToken = user?.token ?? '';
 
         // 이미지 업로드
-        const response = await uploadProfileImage(jwt, file);
+        const response = await uploadProfileImage(accessToken, file);
 
         if (response.success) {
           console.log('Profile image uploaded successfully');
