@@ -2,6 +2,7 @@ export const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 export const passwordPattern =
   /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,16}$/;
 export const namePattern = /^[가-힣]{2,8}$/;
+export const nickNamePattern = /^[a-zA-Z가-힣]{2,10}$/;
 
 export const SIGNUP_INPUT_FIELDS = [
   {
