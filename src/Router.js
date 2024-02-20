@@ -7,6 +7,7 @@ import EditPassword from 'pages/MyPage/EditProfile/EditPassword/EditPassword';
 import MyComments from 'pages/MyPage/MyComments/MyComments';
 import MyLikes from 'pages/MyPage/MyLikes/MyLikes';
 import MyPosts from 'pages/MyPage/MyPosts/MyPosts';
+import Footer from 'pages/Authentication/components/Footer/Footer';
 
 const Router = () => {
   return (
@@ -22,6 +23,7 @@ const Router = () => {
           <Route path="/my-page/comments" element={<MyComments />} />
           <Route path="/my-page/likes" element={<MyLikes />} />
         </Routes>
+        <Footer />
       </>
     </BrowserRouter>
   );
